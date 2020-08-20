@@ -1,0 +1,14 @@
+{
+    "id": "2",
+    "type": {
+        "code": "2",
+        "name": "Postal Address"
+    },
+    "cityOrTown": "City 2",
+    "country": {
+        "code": "LB",
+        "name": "Lebanon"
+    },
+    "postalCode": "2345",
+    "lastUpdated": "2017-06-21T00:00:00.000Z"
+}

@@ -1,0 +1,19 @@
+{
+    "id": "3",
+    "type": {
+        "code": "5",
+        "name": "Business Address"
+    },
+    "addressLineDetail": {
+        "line1": "Address 3",
+        "line2": ""
+    },
+    "cityOrTown": "City 3",
+    "country": {
+        "code": "ZA",
+        "name": "South Africa"
+    },
+    "postalCode": "3456",
+    "suburbOrDistrict": "Suburb 3",
+    "lastUpdated": "2018-06-13T00:00:00.000Z"
+}
