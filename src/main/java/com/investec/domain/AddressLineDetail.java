@@ -2,7 +2,8 @@ package com.investec.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 @Builder
 @Data
@@ -12,7 +13,9 @@ public class AddressLineDetail {
     private String line2;
 
     @JsonCreator
-    public AddressLineDetail(@JsonProperty("line1") String line1, @JsonProperty("line2") String line2) {
+    public AddressLineDetail(
+            @JsonProperty("line1") String line1,
+            @JsonProperty("line2") String line2) {
         this.line1 = line1;
         this.line2 = line2;
     }

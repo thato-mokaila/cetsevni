@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * LocalDateTime custom serializer
+ */
 public class JsonDateSerializer extends JsonSerializer<LocalDateTime> {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(IAddress.DATE_FORMAT);

@@ -3,6 +3,9 @@ package com.investec.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+/**
+ * Factory which return a lazy singleton instance of the mapper.
+ */
 public class MapperFactory {
 
     // initialization on demand

@@ -13,6 +13,12 @@ import com.investec.ext.PostalAddress;
 
 import java.io.IOException;
 
+/**
+ * Custom deserializer fro mapping json object to specific
+ * sub-classes. This should derive the metadata from the type
+ * field in the json object which seem to be consistent across
+ * all address instances.
+ */
 public class AddressDeserializer extends StdDeserializer<Address> {
 
     public AddressDeserializer() {
@@ -28,8 +34,7 @@ public class AddressDeserializer extends StdDeserializer<Address> {
         final JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         final ObjectMapper mapper = (ObjectMapper)jsonParser.getCodec();
 
-        System.out.println(node);
-
+        // We can also use the name property
         switch (node.get("type").get("code").textValue()) {
             case "1":
                 return mapper.treeToValue(node, PhysicalAddress.class);

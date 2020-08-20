@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * LocalDateTime custom deserializer
+ */
 public class JsonDateDeserializer extends JsonDeserializer<LocalDateTime> {
 
     @Override

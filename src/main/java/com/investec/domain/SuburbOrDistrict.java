@@ -1,6 +1,7 @@
 package com.investec.domain;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 @Builder
 @Data

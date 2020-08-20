@@ -1,6 +1,5 @@
 package com.investec;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.investec.domain.Address;
@@ -15,11 +14,10 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author thato
- * Read and parse Addresses from json file.
+ * Read and parse addresses from json file.
  */
 public class App {
 
