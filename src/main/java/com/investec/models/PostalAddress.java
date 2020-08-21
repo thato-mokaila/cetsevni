@@ -1,6 +1,5 @@
-package com.investec.ext;
+package com.investec.models;
 
-import com.investec.domain.Address;
 import com.investec.service.IPrinter;
 import lombok.Builder;
 

@@ -1,4 +1,4 @@
-package com.investec.domain;
+package com.investec.models;
 
 import lombok.Builder;
 import lombok.Data;

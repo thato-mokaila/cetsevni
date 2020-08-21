@@ -6,10 +6,10 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.investec.domain.Address;
-import com.investec.ext.BusinessAddress;
-import com.investec.ext.PhysicalAddress;
-import com.investec.ext.PostalAddress;
+import com.investec.models.Address;
+import com.investec.models.BusinessAddress;
+import com.investec.models.PhysicalAddress;
+import com.investec.models.PostalAddress;
 
 import java.io.IOException;
 

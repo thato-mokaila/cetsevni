@@ -1,6 +1,6 @@
 package com.investec.rules;
 
-import com.investec.domain.Address;
+import com.investec.models.Address;
 
 import java.util.function.Predicate;
 

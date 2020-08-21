@@ -2,7 +2,7 @@ package com.investec;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.investec.domain.Address;
+import com.investec.models.Address;
 import com.investec.rules.AddressValidator;
 import com.investec.rules.Rule;
 import com.investec.rules.StandardValidator;

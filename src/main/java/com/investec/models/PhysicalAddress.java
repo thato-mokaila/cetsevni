@@ -1,15 +1,17 @@
-package com.investec.ext;
+package com.investec.models;
 
-import com.investec.domain.Address;
 import com.investec.service.IPrinter;
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Builder
-public class BusinessAddress extends Address implements IPrinter {
+public class PhysicalAddress extends Address implements IPrinter  {
     @Override
     public String printAddress() {
         // TODO: Parse json instances polymorphic'ly to allow this printing
         return this.getType().getName();
     }
-
 }

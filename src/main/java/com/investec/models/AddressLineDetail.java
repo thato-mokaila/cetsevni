@@ -1,4 +1,4 @@
-package com.investec.domain;
+package com.investec.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
