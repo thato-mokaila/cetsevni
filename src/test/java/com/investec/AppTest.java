@@ -6,10 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.investec.models.Address;
 import com.investec.models.AddressLineDetail;
 import com.investec.models.SimpleType;
-import com.investec.models.SuburbOrDistrict;
-import com.investec.models.BusinessAddress;
-import com.investec.models.PhysicalAddress;
-import com.investec.models.PostalAddress;
 import com.investec.rules.Rule;
 import com.investec.rules.StandardValidator;
 import com.investec.rules.ZAValidator;
@@ -43,17 +39,15 @@ public class AppTest {
     public void setUp() {
         MAPPER = MapperFactory.getMapper();
         app = new App();
-        physicalAddress = new Address(
-                "1",
-                SimpleType.builder().code("1").name("Physical Address").build(),
-                AddressLineDetail.builder().line1("123 Mangosuthu Street").line2("Unit 34").build(),
-                "0921",
-                "Pretoria",
-                SimpleType.builder().code("ZA").name("South Africa").build(),
-                SimpleType.builder().code("3").name("Gauteng").build(),
-                SuburbOrDistrict.builder().code("Centurion").build(),
-                LocalDateTime.now()
-        );
+        physicalAddress = Address.builder()
+                .id("1")
+                .type(SimpleType.builder().code("1").name("Physical Address").build())
+                .addressLineDetail(AddressLineDetail.builder().line1("123 Mangosuthu Street").line2("Unit 34").build())
+                .postalCode("0921")
+                .cityOrTown("Pretoria")
+                .country(SimpleType.builder().code("ZA").name("South Africa").build())
+                .provinceOrState(SimpleType.builder().code("3").name("Gauteng").build())
+                .lastUpdated(LocalDateTime.now()).build();
     }
 
     @After
@@ -106,19 +100,6 @@ public class AppTest {
 
     @Test
     public void shouldSerializePhysicalAddress() throws IOException {
-
-        Address physicalAddress = new Address(
-                "1",
-                SimpleType.builder().code("1").name("Physical Address").build(),
-                AddressLineDetail.builder().line1("123 Mangosuthu Street").line2("Unit 34").build(),
-                "0921",
-                "Pretoria",
-                SimpleType.builder().code("ZA").name("South Africa").build(),
-                SimpleType.builder().code("3").name("Gauteng").build(),
-                SuburbOrDistrict.builder().code("Centurion").build(),
-                LocalDateTime.now()
-        );
-
         String s = MAPPER.writeValueAsString(physicalAddress);
         assertNotNull(s);
         assertTrue(s.contains("Physical Address"));
@@ -130,7 +111,7 @@ public class AppTest {
     public void shouldDeSerializePhysicalAddress() throws IOException {
 
         byte[] jsonData = Files.readAllBytes(Paths.get(PHYSICAL_ADDRESS_PATH));
-        final Address physicalAddress = MAPPER.readValue(jsonData, PhysicalAddress.class);
+        final Address physicalAddress = MAPPER.readValue(jsonData, Address.class);
         // System.out.println(physicalAddress);
         assertEquals("1", physicalAddress.getType().getCode());
     }
@@ -139,15 +120,15 @@ public class AppTest {
     public void shouldDeSerializePostalAddress() throws IOException {
 
         byte[] jsonData = Files.readAllBytes(Paths.get(POSTAL_ADDRESS_PATH));
-        final Address businessAddress = MAPPER.readValue(jsonData, PostalAddress.class);
-        assertEquals("2", businessAddress.getType().getCode());
+        final Address postalAddress = MAPPER.readValue(jsonData, Address.class);
+        assertEquals("2", postalAddress.getType().getCode());
     }
 
     @Test
     public void shouldDeSerializeBusinessAddress() throws IOException {
 
         byte[] jsonData = Files.readAllBytes(Paths.get(BUSINESS_ADDRESS_PATH));
-        final Address businessAddress = MAPPER.readValue(jsonData, BusinessAddress.class);
+        final Address businessAddress = MAPPER.readValue(jsonData, Address.class);
         assertEquals("5", businessAddress.getType().getCode());
     }
 
@@ -155,8 +136,7 @@ public class AppTest {
     public void shouldDeSerializeListOfAddress() throws IOException {
 
         byte[] jsonData = Files.readAllBytes(Paths.get(ALL_ADDRESSES_PATH));
-        List<? extends Address> addresses = MAPPER.readValue(jsonData, new TypeReference<List<? extends Address>>() {
-        });
+        List<? extends Address> addresses = MAPPER.readValue(jsonData, new TypeReference<List<? extends Address>>() {});
         assertEquals(3, addresses.size());
     }
 

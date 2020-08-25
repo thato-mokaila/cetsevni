@@ -10,6 +10,7 @@ import com.investec.util.JsonDateDeserializer;
 import com.investec.util.JsonDateSerializer;
 import com.investec.util.MapperFactory;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,8 +19,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-// @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
-// @JsonSubTypes({ @JsonSubTypes.Type(value = PhysicalAddress.class) })
+@Builder
 public class Address implements IAddress, IPrinter {
 
     private String id;

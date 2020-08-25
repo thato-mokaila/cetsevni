@@ -3,6 +3,7 @@ package com.investec;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.investec.models.Address;
+import com.investec.models.SimpleType;
 import com.investec.rules.AddressValidator;
 import com.investec.rules.Rule;
 import com.investec.rules.StandardValidator;
@@ -58,6 +59,15 @@ public class App {
      */
     public String formattedPrinting(Address address) {
         return address.formattedAddress();
+    }
+
+    /**
+     * Print addresses by type.
+     *
+     * @param type address to be printed
+     */
+    public void printAddressesByType(SimpleType type) {
+        addresses.stream().filter(a -> type.equals(a.getType())).forEach(System.out::println);
     }
 
     /**
@@ -173,8 +183,7 @@ public class App {
         // Printing an addresses type
         if (!addresses.isEmpty()) {
             System.out.println("\n# ##################### Printing addresses by types #####################\n");
-            String out = addresses.get(new Random().nextInt(addresses.size())).printAddress();
-            System.out.println(out);
+            app.printAddressesByType(SimpleType.builder().code("1").name("Physical Address").build());
             System.out.println("\n# ##################### Printing addresses by types #####################\n");
         }
 
